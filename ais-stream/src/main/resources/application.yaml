@@ -1,0 +1,23 @@
+server:
+  port: 9001
+spring:
+  kafka:
+    client-id: ais-stream-hari-client
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: ais-stream-consumer
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+---
+kafka:
+  topic:
+    ais-input: ais-input
+    ais-output: ais-output
+    ais-anamoly: ais-anamoly
+
+logging:
+  file: /logs/kafka-ais-stream-consumer.log
+
+model:
+  repo-path: AIS_model_3.h5

@@ -1,0 +1,14 @@
+# Project exclude paths
+/.gradle/
+/ais-producer/build/
+/ais-producer/build/classes/
+/ais-producer/build/classes/java/main/
+/ais-producer/build/libs/
+/ais-producer/build/resources/
+/ais-producer/build/tmp/
+/spark-streaming-test/build/
+/spark-streaming-test/build/classes/
+/spark-streaming-test/build/classes/java/main/
+/spark-streaming-test/build/libs/
+/spark-streaming-test/build/resources/
+/spark-streaming-test/build/tmp/

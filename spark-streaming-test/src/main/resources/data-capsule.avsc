@@ -1,0 +1,10 @@
+{
+  "type": "record",
+  "namespace": "com.ais.data",
+  "name": "cbpDataCapsule",
+  "fields": [
+    { "name": "contentype", "type": "string" },
+    { "name": "createdtimestamp", "type": "string" },
+    { "name" : "content", "type" : "string" }
+  ]
+}

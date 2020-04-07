@@ -1,6 +1,6 @@
 FROM openjdk:13-oracle
 VOLUME /tmp
 ARG JAR_FILE
-COPY ${JAR_FILE} app.jar
+COPY ${JAR_FILE} ${JAR_FILE}
 EXPOSE 9001
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-jar", "/${JAR_FILE}"]

@@ -2,10 +2,18 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.2.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'com.palantir.docker' version '0.25.0'
 }
 
 group 'ceterifuge-parent-project'
 version '1.0'
+def prjname = "ais-stream"
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
 
 compileJava {
     sourceCompatibility = '11'
@@ -14,6 +22,14 @@ compileJava {
 
 repositories {
     mavenCentral()
+}
+
+docker {
+    //https://github.com/ekim197711/springboot-docker-gradle
+    name "centrifuge-ais-stream"
+    dockerfile file('src/docker/Dockerfile')
+    copySpec.from(jar).rename(".*","${prjname}-${version}.jar")
+    buildArgs(['JAR_FILE': "${prjname}-${version}.jar"])
 }
 
 test {
@@ -40,10 +56,6 @@ dependencies {
     implementation 'org.nd4j:nd4j-native-platform:1.0.0-beta6'
     implementation 'com.googlecode.json-simple:json-simple:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.6'
-    //implementation 'org.nd4j:nd4j-native:1.0.0-beta6'
-    //implementation "org.slf4j:slf4j-simple:1.7.25"
-    //implementation "org.slf4j:slf4j-api:1.7.25"
-
     testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.4.2'
     )

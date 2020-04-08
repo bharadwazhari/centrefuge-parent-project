@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' version '2.2.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'com.palantir.docker' version '0.25.0'
+    id 'com.palantir.docker-run' version '0.25.0'
 }
 
 group 'ceterifuge-parent-project'
@@ -25,11 +26,21 @@ repositories {
 }
 
 docker {
-    //https://github.com/ekim197711/springboot-docker-gradle
-    name "centrifuge-ais-stream"
+    dependsOn clean
+    dependsOn build
+    name "${project.name}:${project.version}"
     dockerfile file('src/docker/Dockerfile')
-    copySpec.from(jar).rename(".*","${prjname}-${version}.jar")
-    buildArgs(['JAR_FILE': "${prjname}-${version}.jar"])
+    copySpec.from(jar).rename(".*","${project.name}-${project.version}.jar")
+    buildArgs(['JAR_FILE': "${project.name}-${project.version}.jar"])
+}
+
+// dockerRun is not used
+dockerRun {
+    name "${project.name}"
+    image "${project.name}:${project.version}"
+    ports '9001:9001'
+    clean true
+    daemonize false
 }
 
 test {

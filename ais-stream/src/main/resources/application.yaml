@@ -3,7 +3,7 @@ server:
 spring:
   kafka:
     client-id: ais-stream-hari-client
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 192.168.1.246:9092
     consumer:
       group-id: ais-stream-consumer
       auto-offset-reset: earliest

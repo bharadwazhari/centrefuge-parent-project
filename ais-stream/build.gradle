@@ -34,7 +34,6 @@ docker {
     buildArgs(['JAR_FILE': "${project.name}-${project.version}.jar"])
 }
 
-// dockerRun is not used
 dockerRun {
     name "${project.name}"
     image "${project.name}:${project.version}"

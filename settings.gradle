@@ -1,7 +1,7 @@
 rootProject.name = 'centrefuge-parent-project'
 include 'ais-publisher'
 include 'ais-producer'
-include 'spark-streaming-test'
 include 'ais-stream'
 include 'ais-stream'
+
 

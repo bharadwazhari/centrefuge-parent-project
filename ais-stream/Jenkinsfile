@@ -16,9 +16,10 @@ node {
 	}
 
 	stage('Build Project') {
-	    //git add -f gradle/wrapper/gradle-wrapper.jar
-	    bat 'cd ais-stream'
-	    bat 'gradle clean build docker'
+	    withGradle {
+            bat 'ais-stream/gradlew clean build docker'
+        }
+
 	}
 
 	/*stage('Push image') {

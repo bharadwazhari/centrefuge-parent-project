@@ -6,6 +6,10 @@ plugins {
     id 'com.palantir.docker-run' version '0.25.0'
 }
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '6.3'
+}
+
 group 'ceterifuge-parent-project'
 version '1.0'
 def prjname = "ais-stream"

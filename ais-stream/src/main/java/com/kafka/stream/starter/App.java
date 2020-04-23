@@ -25,6 +25,7 @@ public class App {
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, kafkaProperties.getClientId());
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+        //config.put(StreamsConfig.PROCESSING_GUARANTEE_CONFIG, StreamsConfig.EXACTLY_ONCE);
         return new KafkaStreamsConfiguration(config);
     }
 }
